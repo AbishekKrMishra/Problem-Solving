@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> addToArrayForm(vector<int>& num, int k) {
+        int carry=0;
+        int n=num.size()-1;
+        while(n>=0){
+            int sum=num[n]+(k%10)+carry;
+            k/=10;
+            num[n]=sum%10;
+            n--;
+            carry=sum/10;
+        }
+        while(k){
+            int sum=(k%10)+carry;
+            k/=10;
+            num.insert(num.begin(),sum%10);
+            carry=sum/10;
+        }
+        if(carry){
+            num.insert(num.begin(),carry);
+        }
+        return num;
+    }
+};
