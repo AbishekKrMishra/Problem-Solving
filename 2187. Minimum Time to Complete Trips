@@ -1,0 +1,21 @@
+class Solution {
+public:
+    long long minimumTime(vector<int>& time, int totalTrips) {
+        int n=time.size();
+        long long l=1,r=1e14;
+        while(l<=r){
+            long long trip=0;
+            long long mid=l+(r-l)/2;
+            for(int i=0;i<n;i++){
+                trip+=mid/time[i];
+            }
+            if(trip<totalTrips){
+                l=mid+1;
+            }
+            else{
+                r=mid-1;
+            }
+        }
+        return l;
+    }
+};
